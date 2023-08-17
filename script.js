@@ -7,7 +7,9 @@ const cs = (el) => document.querySelectorAll(el);
 pizzaJson.map( (item, index )=>{
 
     let pizzaItem = c('.models .pizza-item').cloneNode(true);
+    
     //preencher as informações em pizzaitem
+
     pizzaItem.setAttribute('data-key', index);
     pizzaItem.querySelector('.pizza-item--img img').src  = item.img;
     pizzaItem.querySelector('.pizza-item--price').innerHTML = `R$ ${item.price.toFixed(2)}`;
@@ -49,4 +51,16 @@ pizzaJson.map( (item, index )=>{
 
     c('.pizza-area').append(pizzaItem);
 
+});
+
+// Evento do Modal
+function fecharModal() {
+    c('.pizzaWindowArea').style.opacity = "0";
+    setTimeout(()=>{
+        c('.pizzaWindowArea').style.display = "none";
+    }, 500);
+};
+
+cs('.pizzaInfo--cancelButton, .pizzaInfo--cancelMobileButton').forEach((item)=>{
+    item.addEventListener('click', fecharModal);
 });
