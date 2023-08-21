@@ -1,4 +1,6 @@
+let cart = [];
 let modalQt = 1;
+let modalKey = 0;
 
 const c = (el) => document.querySelector(el);
 const cs = (el) => document.querySelectorAll(el);
@@ -22,6 +24,7 @@ pizzaJson.map( (item, index )=>{
 
         let key = e.target.closest('.pizza-item').getAttribute('data-key');
         modalQt = 1;
+        modalKey = key;
 
         c('.pizzaBig img').src = pizzaJson[key].img;
         c('.pizzaInfo h1').innerHTML = pizzaJson[key].name;
@@ -88,3 +91,19 @@ cs('.pizzaInfo--size').forEach((size, sizeIndex)=>{
    });
 
 });
+
+    // Evento de adicionar ao carrinho //
+
+c('.pizzaInfo--addButton').addEventListener('click', ()=>{
+    
+    let size = parseInt(c('.pizzaInfo--size.selected').getAttribute('data-key'));
+       
+    cart.push({
+        id:pizzaJson[modalKey].id,
+        size,
+        qt: modalQt
+    });
+
+    fecharModal();
+    
+}); 
