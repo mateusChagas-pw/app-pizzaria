@@ -1,6 +1,7 @@
 # app-pizzaria
-projeto em andamento.
+projeto compra de pizza.
 
 Tecnologias: Html, CSS, JavaScript
 
+* [Site](https://mateuschagas-pw.github.io/app-pizzaria/)
 
